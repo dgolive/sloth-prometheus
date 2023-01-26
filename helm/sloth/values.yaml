@@ -1,4 +1,7 @@
-labels: {}
+labels: 
+  Product: DevOps
+  ProductComponents: monitoring
+  severity: warning
 
 image:
   repository: ghcr.io/slok/sloth
