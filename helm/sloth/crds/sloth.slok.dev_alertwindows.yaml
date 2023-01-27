@@ -130,10 +130,6 @@ spec:
                   processed and generated for Prometheus operator successfully.
                 type: integer
             required:
-            #- observedGeneration
-            #- processedSLOs
-            #- promOpRulesGenerated
-            #- promOpRulesGeneratedSLOs
             type: object
         type: object
     served: true
