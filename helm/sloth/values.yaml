@@ -23,10 +23,10 @@ imagePullSecrets: []
 sloth:
   resyncInterval: ""    # The controller resync interval duration (e.g 15m).
   workers: 0            # The number of concurrent controller workers (e.g 5).
-  labelSelector: ""     # Sloth will handle only the ones that match the selector.
-  namespace: ""         # The namespace where sloth will the CRs to process.
+  labelSelector: slo-window=7d       # Sloth will handle only the ones that match the selector.
+  namespace:          # The namespace where sloth will the CRs to process.
   extraLabels: {}       # Labels that will be added to all the generated SLO Rules.
-  defaultSloPeriod: ""  # The slo period used by sloth (e.g. 30d).
+  defaultSloPeriod: 7d  # The slo period used by sloth (e.g. 30d).
   optimizedRules: true  # Reduce prom load for calculating period window burnrates.
   debug:
     enabled: false
