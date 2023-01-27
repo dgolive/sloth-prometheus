@@ -1,0 +1,142 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: (devel)
+  creationTimestamp: null
+  name: alertwindows.sloth.slok.dev
+spec:
+  group: sloth.slok.dev
+  names:
+    categories:
+    - saw
+    kind: AlertWindows
+    listKind: AlertWindowsList
+    plural: alertwindows
+    shortNames:
+    - saw
+    singular: alertwindow
+  scope: Namespaced
+  versions:
+  - additionalPrinterColumns:
+    - jsonPath: .spec.sloPeriod
+      name: SLOPERIOD
+      type: string
+    - jsonPath: .metadata.creationTimestamp
+      name: AGE
+      type: date
+    name: v1
+    schema:
+      openAPIV3Schema:
+        description: AlertWindows....
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: spec for Alert Windows.
+            type: object
+            properties:
+              labels:
+                additionalProperties:
+                  type: string
+                description: Labels are....
+                type: object
+              sloPeriod: 
+                description: period.
+                type: string
+              page:
+                description: xxx
+                type: object
+                properties:  
+                  quick:
+                    description: xxx
+                    type: object
+                    properties:
+                      errorBudgetPercent:
+                        type: integer
+                      shortWindow:
+                        type: string
+                      longWindow:
+                        type: string 
+                  slow:
+                    description: xxx
+                    type: object
+                    properties:
+                      errorBudgetPercent:
+                        type: number
+                      shortWindow:
+                        type: string
+                      longWindow:
+                        type: string                              
+              ticket:
+                description: xxx
+                type: object
+                properties:  
+                  quick:
+                    description: xxx
+                    type: object
+                    properties:
+                      errorBudgetPercent:
+                        type: integer
+                      shortWindow:
+                        type: string
+                      longWindow:
+                        type: string 
+                  slow:
+                    description: xxx
+                    type: object
+                    properties:
+                      errorBudgetPercent:
+                        type: integer
+                      shortWindow:
+                        type: string
+                      longWindow:
+                        type: string     
+          status:
+            properties:
+              lastPromOpRulesSuccessfulGenerated:
+                description: LastPromOpRulesGeneration tells the last atemp made for
+                  a successful SLO rules generate.
+                format: date-time
+                type: string
+              observedGeneration:
+                description: ObservedGeneration tells the generation was acted on,
+                  normally this is required to stop an infinite loop when the status
+                  is updated because it sends a watch updated event to the watchers
+                  of the K8s object.
+                format: int64
+                type: integer
+              processedSLOs:
+                description: ProcessedSLOs tells how many SLOs haven been processed
+                  for Prometheus operator.
+                type: integer
+              promOpRulesGenerated:
+                description: PromOpRulesGenerated tells if the rules for prometheus
+                  operator CRD have been generated.
+                type: boolean
+              promOpRulesGeneratedSLOs:
+                description: PromOpRulesGeneratedSLOs tells how many SLOs have been
+                  processed and generated for Prometheus operator successfully.
+                type: integer
+            required:
+            #- observedGeneration
+            #- processedSLOs
+            #- promOpRulesGenerated
+            #- promOpRulesGeneratedSLOs
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
