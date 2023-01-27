@@ -25,8 +25,7 @@ sloth:
   workers: 0            # The number of concurrent controller workers (e.g 5).
   labelSelector: slo-window=7d       # Sloth will handle only the ones that match the selector.
   namespace:          # The namespace where sloth will the CRs to process.
-  extraLabels: 
-    slo-window: 7d        # Labels that will be added to all the generated SLO Rules.
+  extraLabels:        # Labels that will be added to all the generated SLO Rules.
     role: record-rules
   defaultSloPeriod: 7d  # The slo period used by sloth (e.g. 30d).
   optimizedRules: true  # Reduce prom load for calculating period window burnrates.
