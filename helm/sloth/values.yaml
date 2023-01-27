@@ -61,7 +61,7 @@ customSloConfig:
     apiVersion: sloth.slok.dev/v1
     kind: AlertWindows
     spec:
-      sloPeriod: 30d
+      sloPeriod: 7d
       page:
         quick:
           errorBudgetPercent: 1
